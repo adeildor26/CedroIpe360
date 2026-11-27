@@ -1,0 +1,13 @@
+CEDROIPE360 - CORRECAO DA IDENTIDADE GIT
+
+1. Extraia este ZIP.
+2. Execute Corrigir-Identidade-Git.cmd.
+3. A identidade e configurada apenas no repositorio CedroIpe360.
+4. O script prepara, commita e tenta enviar os arquivos para origin/main.
+
+Identidade usada:
+Nome: adeildor26
+Email: adeildor26@users.noreply.github.com
+
+Nenhuma senha ou token e solicitada ou gravada. Se o push pedir autenticacao,
+conclua pelo Git Credential Manager no navegador; nunca cole token no chat.
