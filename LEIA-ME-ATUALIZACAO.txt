@@ -1,0 +1,7 @@
+CEDROIPE 360 - ATUALIZACAO INCREMENTAL V1
+Base: snapshot publico recuperado do Cloudflare Pages.
+- index.html: mantém a página recuperada e adiciona alternância Cards/Lista.
+- ci360-update.css/js: visualização de catálogo em lista ou cards.
+- acesso.html: recupera rota CRM/ADM, com autenticação Supabase Auth usando config público existente.
+Limitações: este snapshot não contém o backend /api/catalogo, galeria completa nem dados privados. A tela administrativa é estrutura de interface; não inventa métricas nem modifica o banco. Validar RLS e schemas antes de ligar módulos.
+Não publicar por cima da produção antes de revisar e validar o deploy Cloudflare Pages.

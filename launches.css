@@ -1,0 +1,98 @@
+/* V11: empreendimentos na planta imediatamente visíveis */
+.launches{padding-top:26px;padding-bottom:20px;position:relative;z-index:2}.launches-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}.launches-head h2{font-size:clamp(26px,3vw,38px);letter-spacing:-1px;margin:6px 0}.launches-head p{margin:0;color:#52675e;font-size:14px}.launches-head>a{color:#146e52;font-weight:800;white-space:nowrap}.launches-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.launch-card{min-width:0;background:#fff;border:1px solid #dce9e1;border-radius:18px;overflow:hidden;box-shadow:0 9px 30px rgba(13,49,38,.08)}.launch-image{height:235px;display:block;position:relative;overflow:hidden;background:#e6efe9}.launch-image img{display:block;width:100%;height:100%;object-fit:cover}.launch-image span{position:absolute;top:13px;left:13px;background:#fff;padding:8px 12px;border-radius:25px;color:#145b44;font-size:11px;font-weight:900}.launch-content{padding:18px 20px 21px}.launch-place{font-size:12px;color:#137552;font-weight:800;margin:0}.launch-content h3{font-size:23px;margin:5px 0 7px;line-height:1.15}.launch-content>p:not(.launch-place){font-size:13px;color:#4d6159;margin:0 0 15px;line-height:1.5;min-height:39px}.launch-actions{display:flex;gap:10px;flex-wrap:wrap}.launch-actions a{padding:11px 14px;border-radius:9px;font-size:13px;font-weight:800;text-align:center}.launch-primary{background:#17694e;color:#fff}.launch-secondary{border:1px solid #17694e;color:#17694e}.launch-disclaimer{font-size:10px;color:#67766e;margin:12px 0 0}.compact-hero{padding-top:20px!important}@media(max-width:720px){.launches-grid{grid-template-columns:1fr}.launch-image{height:210px}.launches-head>a{display:none}.launches{padding-top:14px}.launch-content h3{font-size:21px}.launch-content>p:not(.launch-place){min-height:0}}
+
+/* V12: três destaques fixos, sem arraste horizontal */
+.launches-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;overflow:visible!important}
+.launch-card{min-width:0!important;width:auto!important}
+.launch-card .launch-image{display:block;position:relative;overflow:hidden}
+.launch-card .launch-image img{width:100%;height:230px;object-fit:cover}
+.launch-card .launch-actions{display:flex;flex-wrap:wrap;gap:8px}
+.launch-card .launch-actions a{max-width:100%;box-sizing:border-box}
+.pending-visual{height:230px;display:flex!important;align-items:center;justify-content:center;background:linear-gradient(135deg,#e5ede8,#f4f6f1);color:#27624d}
+.pending-icon{font-size:90px;line-height:1;opacity:.45}
+.pending-disabled{background:#e2e9e5!important;color:#60776c!important;cursor:not-allowed!important;display:inline-block}
+@media(max-width:850px){.launches-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:620px){.launches-grid{grid-template-columns:1fr!important}.launch-card .launch-image img,.pending-visual{height:220px}}
+
+/* HF-058-CARROSSEL-BAIXO-CARDS-COMPACTOS */
+/* Cards mais baixos: duas linhas de tres cards cabem melhor na primeira tela. */
+.launches{padding-top:12px!important;padding-bottom:12px!important}
+.launches-head{margin-bottom:10px!important;gap:8px!important}
+.launches-head h2{font-size:clamp(21px,2.2vw,29px)!important;margin:3px 0!important}
+.launches-head p{font-size:12px!important;line-height:1.3!important}
+.launches-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
+.launch-card{border-radius:12px!important}
+.launch-image{height:105px!important}
+.launch-content{padding:9px 10px 10px!important}
+.launch-place{font-size:10px!important}
+.launch-content h3{font-size:14px!important;line-height:1.15!important;margin:3px 0 4px!important}
+.launch-content>p:not(.launch-place){font-size:10px!important;line-height:1.3!important;margin:0 0 7px!important;min-height:0!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.launch-actions{gap:5px!important}
+.launch-actions a,.launch-actions button{font-size:10px!important;padding:6px 8px!important}
+#catalogPager{margin:8px auto!important}
+@media(max-width:760px){
+ .launches-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ .launch-image{height:105px!important}
+ .launch-content{padding:8px!important}
+ .launch-content h3{font-size:13px!important}
+}
+@media(max-width:380px){
+ .launches-grid{grid-template-columns:1fr!important}
+}
+/* HF-060-NAV-ENXUTA-DESCRICAO-COMPACTA */
+/* Descricao institucional da vitrine limitada a duas linhas; sem empurrar os cards para baixo. */
+.launches-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:end!important;
+  column-gap:12px!important;
+  row-gap:3px!important;
+  margin-bottom:8px!important;
+}
+.launches-head h2{margin:2px 0!important;line-height:1.12!important}
+.launches-head p{
+  max-width:760px!important;
+  margin:2px 0!important;
+  font-size:11px!important;
+  line-height:1.25!important;
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+  overflow:hidden!important;
+}
+.launches-head p + p{margin-top:0!important}
+@media(max-width:650px){
+  .launches-head{grid-template-columns:minmax(0,1fr)!important;row-gap:2px!important}
+  .launches-head p{-webkit-line-clamp:2!important;font-size:10px!important}
+}
+/* HF-061-CARDS-UM-POUCO-MAIORES-6-ITENS */
+/* Mantem seis imoveis por pagina; aumenta pouco a leitura e a foto dos cards. */
+.launches-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+.launch-card{min-width:0!important}
+.launch-image{height:122px!important}
+.launch-content{padding:10px 11px 11px!important}
+.launch-content h3{font-size:15px!important;line-height:1.2!important;margin:4px 0 5px!important}
+.launch-content .launch-place{font-size:10.5px!important}
+.launch-content>p:not(.launch-place){
+  font-size:10.5px!important;
+  line-height:1.35!important;
+  -webkit-line-clamp:2!important;
+}
+.launch-actions a,.launch-actions button{
+  font-size:10.5px!important;
+  padding:7px 9px!important;
+}
+@media(max-width:760px){
+  .launches-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .launch-image{height:116px!important}
+  .launch-content{padding:9px!important}
+  .launch-content h3{font-size:14px!important}
+}
+@media(max-width:380px){
+  .launches-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  .launch-image{height:100px!important}
+  .launch-content{padding:7px!important}
+}

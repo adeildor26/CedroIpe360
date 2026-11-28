@@ -1,0 +1,23 @@
+/* CedroIpê73 Prime V18.1 — paleta aprovada, preserva folhas CSS originais */
+:root{--navy:#09234d;--gold:#c99a34;--blue:#153e77;--v181-border:#d9e1ec}
+body{background:#f8fafd;color:#13294b}
+a{color:inherit}
+.header,.admin-bg .header{background:#09234d!important;color:#fff!important}
+.header .logo,.header .nav a,.header .nav-cta{color:#fff}
+.btn-primary,.nav-cta,.search-line button,#buscar,.purpose-active{background:#092d62!important;color:#fff!important;border-color:#092d62!important}
+.section-kicker,.kicker,.featured-kicker{color:#b18120!important}
+.property,.admin-card,.detail-card{border-color:var(--v181-border)}
+.v181-filters{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:12px;margin:18px 0 24px}
+.v181-filters label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:650;color:#142e56}
+.v181-filters select,.v181-filters input{width:100%;min-height:42px;border:1px solid #cbd6e6;border-radius:9px;padding:8px;background:white;color:#13294b}
+.v181-section-title{margin:30px 0 16px;font-size:1.4rem;color:#0b2a59;border-left:4px solid #c99a34;padding-left:12px}
+.v181-project-buttons{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px}
+.v181-project-buttons button{flex:none;border:1px solid #cbd6e6;border-radius:999px;padding:10px 16px;background:#fff;color:#09234d;cursor:pointer}
+.v181-project-buttons button.ativo{background:#09234d;color:#fff;border-color:#09234d}
+.v181-project-strip{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px}
+.v181-project-strip .property{min-width:min(300px,82vw);max-width:340px;scroll-snap-align:start}
+.v181-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:15px 0}
+.v181-videos iframe,.v181-videos video{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#0a1732}
+.v181-plans{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0}.v181-plans img{max-width:300px;max-height:300px;object-fit:contain}
+@media(max-width:900px){.v181-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.v181-filters{grid-template-columns:1fr 1fr;gap:8px}.v181-filters label{font-size:12px}}

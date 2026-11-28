@@ -1,0 +1,154 @@
+﻿/* HF-062 - AJUSTE FINO DA VITRINE | sobrescreve regras antigas conflitantes */
+.launches .launches-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto auto!important;
+  align-items:end!important;
+  column-gap:10px!important;
+  row-gap:4px!important;
+  margin-bottom:8px!important;
+}
+.launches .launches-head > div{min-width:0!important}
+.launches .launches-head > a{
+  grid-column:2!important;
+  grid-row:1!important;
+  align-self:end!important;
+  white-space:nowrap!important;
+  margin:0 2px 3px 0!important;
+}
+body .launches .launches-head > .cedro-page-bar.v31-top-nav,
+body .launches .launches-head .cedro-page-bar.v31-top-nav{
+  position:static!important;
+  inset:auto!important;
+  transform:none!important;
+  display:inline-flex!important;
+  grid-column:3!important;
+  grid-row:1!important;
+  justify-self:end!important;
+  align-self:end!important;
+  width:max-content!important;
+  min-width:0!important;
+  max-width:100%!important;
+  margin:0 0 0 auto!important;
+  padding:3px!important;
+  gap:4px!important;
+  flex-wrap:nowrap!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  border:1px solid #d9b66b!important;
+  border-radius:8px!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  box-sizing:border-box!important;
+  z-index:5!important;
+}
+body .launches .launches-head .cedro-page-bar.v31-top-nav button,
+body .launches .launches-head .cedro-page-bar.v31-top-nav a{
+  display:inline-flex!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:27px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:5px 8px!important;
+  border:1px solid #087a50!important;
+  border-radius:6px!important;
+  background:#087a50!important;
+  color:#fff!important;
+  font-size:10px!important;
+  font-weight:800!important;
+  line-height:1.1!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+  box-sizing:border-box!important;
+}
+body .launches .launches-head .cedro-page-bar.v31-top-nav button:disabled{
+  background:#dcece4!important;
+  color:#245d48!important;
+  border-color:#c6dfd1!important;
+  opacity:1!important;
+}
+body .launches .launches-head .cedro-page-bar.v31-top-nav .cedro-current{display:none!important}
+
+/* Carrossel: reduz a altura sem cortar nem deformar a imagem. */
+#homeReel{margin:0 0 8px!important}
+#homeReel .reel-visual{
+  height:clamp(205px,22vw,270px)!important;
+  min-height:205px!important;
+  max-height:270px!important;
+  overflow:hidden!important;
+  border-radius:15px!important;
+}
+#homeReel .reel-visual > img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+
+/* Seis imóveis por página: 3 colunas x 2 linhas, cards um pouco maiores. */
+.launches .launches-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+  align-items:stretch!important;
+}
+.launches .launch-card{min-width:0!important;border-radius:13px!important}
+.launches .launch-card .launch-image{
+  height:118px!important;
+  min-height:118px!important;
+}
+.launches .launch-card .launch-content{padding:10px 11px 11px!important}
+.launches .launch-card .launch-place{font-size:10px!important;line-height:1.25!important}
+.launches .launch-card .launch-content h3{
+  font-size:16px!important;
+  line-height:1.16!important;
+  margin:4px 0 5px!important;
+}
+.launches .launch-card .launch-content > p:not(.launch-place){
+  font-size:11px!important;
+  line-height:1.35!important;
+  min-height:0!important;
+  margin:0 0 9px!important;
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:2!important;
+  overflow:hidden!important;
+}
+.launches .launch-card .launch-actions{gap:6px!important}
+.launches .launch-card .launch-actions a{
+  padding:7px 9px!important;
+  font-size:10px!important;
+}
+
+/* Tablet e celular: navegação continua compacta e cards adaptam sem rolagem lateral. */
+@media(max-width:900px){
+  .launches .launches-head{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    row-gap:6px!important;
+  }
+  .launches .launches-head > a{grid-column:1!important;grid-row:2!important;justify-self:start!important}
+  body .launches .launches-head .cedro-page-bar.v31-top-nav{
+    grid-column:2!important;grid-row:1!important;
+    justify-self:end!important;
+    max-width:calc(100vw - 32px)!important;
+  }
+  #homeReel .reel-visual{height:clamp(185px,30vw,235px)!important;min-height:185px!important}
+}
+@media(max-width:650px){
+  .launches .launches-head{grid-template-columns:minmax(0,1fr) auto!important}
+  .launches .launches-head h2{font-size:22px!important}
+  body .launches .launches-head .cedro-page-bar.v31-top-nav{gap:3px!important;padding:2px!important}
+  body .launches .launches-head .cedro-page-bar.v31-top-nav button,
+  body .launches .launches-head .cedro-page-bar.v31-top-nav a{
+    min-height:25px!important;padding:4px 6px!important;font-size:9px!important
+  }
+  #homeReel .reel-visual{height:185px!important;min-height:185px!important}
+  .launches .launches-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+  .launches .launch-card .launch-image{height:105px!important;min-height:105px!important}
+  .launches .launch-card .launch-content{padding:8px!important}
+  .launches .launch-card .launch-content h3{font-size:14px!important}
+}
+@media(max-width:380px){
+  .launches .launches-grid{grid-template-columns:1fr!important}
+}
