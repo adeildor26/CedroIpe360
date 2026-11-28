@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CedroIpê 360 | Central de Leads e Campanhas</title>
+<style>
+:root{--navy:#101d35;--navy2:#192b4b;--gold:#c9a45c;--bg:#f3f5f8;--ink:#182235;--muted:#68758a;--line:#e2e7ef;--green:#16845b;--red:#bd3e48;--amber:#a96a12;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(110deg,var(--navy),var(--navy2));color:white;padding:22px max(20px,calc((100% - 1240px)/2));border-bottom:3px solid var(--gold)}
+.brand{font-size:20px;font-weight:750;letter-spacing:.2px}.sub{color:#cbd5e4;margin-top:4px}
+main{max-width:1240px;margin:24px auto;padding:0 18px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+button,.btn{border:0;border-radius:9px;padding:10px 15px;background:var(--navy);color:white;font-weight:650;cursor:pointer}
+button.secondary{background:#e8edf4;color:var(--navy)}button.gold{background:var(--gold);color:#1c2638}button:disabled{opacity:.45;cursor:not-allowed}
+.tab.active{background:var(--gold);color:#1c2638}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi,.panel{background:white;border:1px solid var(--line);border-radius:13px;padding:16px;box-shadow:0 2px 8px #15213a08}
+.kpi small{color:var(--muted)}.num{font-size:28px;font-weight:800;margin-top:5px}.panel{margin-top:16px}.panel h2{font-size:17px;margin:0 0 12px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}
+.muted{color:var(--muted)}.notice{padding:12px;border-radius:9px;background:#f5f7fa;border:1px solid var(--line);margin:10px 0}
+.notice.warn{background:#fff7e9;border-color:#f1d8a9;color:#765016}.notice.ok{background:#eaf7f1;border-color:#b9e2ce;color:#145d41}
+input,select{padding:10px;border:1px solid #cbd4e0;border-radius:8px;background:white;color:var(--ink);max-width:100%}
+input[type=file]{border:1px dashed #aab6c6;width:100%;padding:16px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:700;background:#fafbfd}
+.tablewrap{overflow:auto;max-height:380px}.pill{display:inline-block;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:750;background:#edf1f6;color:#47566c}.pill.ok{background:#e6f5ed;color:#176b49}.pill.bad{background:#fdebed;color:#9f2935}.pill.warn{background:#fff3dc;color:#89550d}
+.hidden{display:none!important}.field{display:flex;flex-direction:column;gap:5px;min-width:190px}.field label{font-size:12px;color:var(--muted);font-weight:700}
+footer{max-width:1240px;margin:25px auto;padding:0 18px 30px;color:var(--muted);font-size:12px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr}.num{font-size:23px}header{padding:18px}}
+</style></head>
+<body>
+<header><div class="brand">CEDROIPE 360 <span style="color:var(--gold)">|</span> Central Comercial</div><div class="sub">Importação de leads · Qualificação · Campanhas · Atendimento IA</div></header>
+<main>
+<div class="tabs">
+<button class="tab active" data-tab="overview">Visão geral</button><button class="tab secondary" data-tab="import">Importar leads</button><button class="tab secondary" data-tab="campaign">Campanha</button><button class="tab secondary" data-tab="settings">Integração</button>
+</div>
+<section id="overview">
+<div class="grid">
+<div class="kpi"><small>Leads importados (confirmados)</small><div class="num" id="kImported">43</div></div>
+<div class="kpi"><small>Registros em revisão</small><div class="num" id="kReview">7</div></div>
+<div class="kpi"><small>Duplicidades internas identificadas</small><div class="num" id="kDup">1</div></div>
+<div class="kpi"><small>Mensagens enviadas nesta sessão</small><div class="num" id="kSent">0</div></div>
+</div>
+<div class="panel"><h2>Estado da operação</h2><div class="notice ok">CRM: importação de 43 registros confirmada pelo retorno do Supabase.</div><div class="notice warn">Campanhas: bloqueadas até confirmar consentimento específico, template aplicável e conexão de envio. O número 5511998105322 está excluído da fila por ser contato interno/de teste.</div><p class="muted">Esta tela permite carregar uma lista, identificar duplicidades, visualizar elegibilidade e preparar uma fila. O envio real depende de um webhook n8n autorizado configurado na aba Integração.</p></div>
+</section>
+<section id="import" class="hidden">
+<div class="panel"><h2>Importar planilha de leads</h2>
+<p class="muted">Aceita CSV. A leitura ocorre no navegador. Não envia os dados para servidor até você configurar e acionar uma integração.</p>
+<input type="file" id="csvFile" accept=".csv,text/csv">
+<div class="row" style="margin-top:12px"><button id="loadSample" class="secondary">Carregar exemplo de 43 leads (demonstração)</button><button id="analyze" disabled>Analisar arquivo</button></div>
+<div id="importMsg" class="notice">Aguardando arquivo CSV.</div>
+<div class="tablewrap"><table><thead><tr><th>Nome</th><th>Telefone</th><th>Consentimento</th><th>Resultado</th></tr></thead><tbody id="preview"></tbody></table></div>
+</div></section>
+<section id="campaign" class="hidden">
+<div class="panel"><h2>Preparar campanha WhatsApp</h2>
+<div class="row">
+<div class="field"><label>Nome da campanha</label><input id="campName" value="Apresentação de imóveis CedroIpê"></div>
+<div class="field"><label>Modo</label><select id="campMode"><option value="dry">Simulação (sem envio)</option><option value="test">Teste individual autorizado</option><option value="live">Campanha real (bloqueada neste protótipo)</option></select></div>
+</div>
+<div class="field" style="margin-top:12px;max-width:700px"><label>Mensagem inicial (revise antes de enviar)</label><textarea id="message" rows="4" style="padding:11px;border:1px solid #cbd4e0;border-radius:8px;font:inherit">Olá, {{nome}}! Aqui é da CedroIpê Imóveis. Você autorizou receber informações sobre oportunidades imobiliárias? Se ainda tiver interesse, posso apresentar opções e encaminhar seu atendimento com um corretor. Para não receber novas mensagens, responda SAIR.</textarea></div>
+<div class="notice warn">Não é permitido tratar o campo consentimento=true isoladamente como autorização universal para qualquer campanha. Confirme origem, finalidade e permissão de contato. Respeite pedidos de SAIR/STOP.</div>
+<div class="row"><button id="buildQueue" class="gold">Montar fila elegível</button><button id="sendTest" class="secondary">Enviar teste individual</button><button id="sendBatch" disabled>Enviar campanha</button></div>
+<div id="campaignMsg" class="notice">Fila ainda não montada.</div>
+<div class="tablewrap"><table><thead><tr><th>Nome</th><th>Telefone</th><th>Elegibilidade</th><th>Motivo</th></tr></thead><tbody id="queue"></tbody></table></div>
+</div></section>
+<section id="settings" class="hidden">
+<div class="panel"><h2>Integração com n8n / Evolution</h2>
+<div class="notice warn">Não coloque API keys, tokens ou senhas nesta página. Configure autenticação no servidor/proxy do n8n.</div>
+<div class="field"><label>Webhook n8n para validação/importação (HTTPS recomendado)</label><input id="webhook" placeholder="https://seu-n8n/webhook/ci360-campaign"></div>
+<div class="field" style="margin-top:10px"><label>Webhook n8n para envio de teste individual</label><input id="testWebhook" placeholder="https://seu-n8n/webhook/ci360-test-send"></div>
+<div class="field" style="margin-top:10px"><label>Telefone de teste previamente autorizado (somente dígitos, com DDI)</label><input id="testPhone" placeholder="55DDDNUMERO"></div>
+<div class="row" style="margin-top:12px"><button id="saveSettings">Salvar configuração neste navegador</button><button id="ping" class="secondary">Testar webhook</button></div>
+<div id="settingsMsg" class="notice">Sem webhook configurado. Modo local disponível.</div>
+</div>
+<div class="panel"><h2>Contrato esperado do webhook</h2><pre style="white-space:pre-wrap;background:#f6f8fb;padding:12px;border-radius:8px">POST JSON
+{
+  "action": "campaign_preview | send_test",
+  "tenant_id": "b3e02226-6602-4775-8d7a-6155b2c0f993",
+  "campaign_name": "...",
+  "message": "...",
+  "leads": [{"name":"...","phone":"...","consent":true}],
+  "dry_run": true
+}</pre></div></section>
+</main>
+<footer>CedroIpê 360 · Protótipo operacional de frontend. Ações de envio ficam bloqueadas sem integração n8n e confirmação do backend. Dados de demonstração não representam contatos reais.</footer>
+<script>
+const TENANT='b3e02226-6602-4775-8d7a-6155b2c0f993', INTERNAL='5511998105322';
+let leads=[],queue=[];
+const $=id=>document.getElementById(id);
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');['overview','import','campaign','settings'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab));});
+function norm(v){let n=String(v||'').replace(/\D/g,'');if(n.length===10||n.length===11)n='55'+n;return n}
+function truth(v){return ['true','1','sim','yes','s','autorizado','consentido'].includes(String(v||'').trim().toLowerCase())}
+function renderPreview(){ $('preview').innerHTML=leads.slice(0,100).map(l=>`<tr><td>${esc(l.name)}</td><td>${esc(l.phone)}</td><td>${l.consent?'<span class="pill ok">Sim</span>':'<span class="pill bad">Não</span>'}</td><td>${esc(l.result||'Aguardando análise')}</td></tr>`).join(''); }
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('csvFile').onchange=()=>{$('analyze').disabled=!$('csvFile').files.length;$('importMsg').textContent=$('csvFile').files[0]?.name||''};
+$('analyze').onclick=async()=>{const f=$('csvFile').files[0];const text=await f.text();const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);const delim=(lines[0].match(/;/g)||[]).length>(lines[0].match(/,/g)||[]).length?';':',';const parse=line=>{let a=[],v='',q=false;for(let i=0;i<line.length;i++){let c=line[i];if(c==='"'&&line[i+1]==='"'){v+='"';i++}else if(c==='"')q=!q;else if(c===delim&&!q){a.push(v);v=''}else v+=c}a.push(v);return a};const h=parse(lines.shift()).map(x=>x.trim().toLowerCase());leads=lines.map(line=>{const a=parse(line),o={};h.forEach((k,i)=>o[k]=a[i]||'');let name=o.nome||o.name||o.lead_nome||'',phone=norm(o.telefone_e164||o.telefone||o.celular||o.whatsapp||o.phone),consent=truth(o.consentimento||o.consent||o.opt_in);return {name,phone,consent,raw:o}});analyzeLeads();};
+function analyzeLeads(){let seen=new Set();leads.forEach(l=>{if(!l.name||l.name.trim().length<2)l.result='Nome inválido';else if(!/^55\d{10,11}$/.test(l.phone))l.result='Telefone inválido';else if(l.phone===INTERNAL)l.result='Bloqueado: número interno/teste';else if(!l.consent)l.result='Bloqueado: consentimento não confirmado';else if(seen.has(l.phone))l.result='Duplicado no lote';else{seen.add(l.phone);l.result='Apto para revisão';}});renderPreview();$('importMsg').textContent=`${leads.length} linhas lidas. ${leads.filter(x=>x.result==='Apto para revisão').length} aptas para revisão; ${leads.length-seen.size} bloqueadas ou repetidas. Nenhuma gravação no CRM ocorreu.`;}
+$('loadSample').onclick=()=>{leads=Array.from({length:43},(_,i)=>({name:'Lead demonstração '+(i+1),phone:'551190000'+String(1000+i),consent:true,result:'Apto para revisão'}));leads.push({name:'Adeildo teste',phone:INTERNAL,consent:true});analyzeLeads();$('importMsg').textContent='Dados fictícios de demonstração carregados. Não são os 43 contatos reais do CRM.'};
+$('buildQueue').onclick=()=>{if(!leads.length){$('campaignMsg').textContent='Importe um CSV ou carregue demonstração primeiro.';return}let seen=new Set();queue=leads.map(l=>{let reason=l.result||'';if(l.phone===INTERNAL)reason='Número interno/teste';else if(!l.consent)reason='Consentimento não confirmado';else if(seen.has(l.phone))reason='Telefone duplicado';else if(!/^55\d{10,11}$/.test(l.phone))reason='Telefone inválido';else{seen.add(l.phone);reason='Apto para validação humana'}return {...l,reason,eligible:reason==='Apto para validação humana'}});$('queue').innerHTML=queue.map(l=>`<tr><td>${esc(l.name)}</td><td>${esc(l.phone)}</td><td>${l.eligible?'<span class="pill ok">Pré-apto</span>':'<span class="pill bad">Bloqueado</span>'}</td><td>${esc(l.reason)}</td></tr>`).join('');$('campaignMsg').textContent=`Fila montada: ${queue.filter(x=>x.eligible).length} pré-aptos. Esta fila não é autorização automática para envio.`;$('sendBatch').disabled=true;};
+$('saveSettings').onclick=()=>{localStorage.setItem('ci360_webhook',$('webhook').value);localStorage.setItem('ci360_testwebhook',$('testWebhook').value);localStorage.setItem('ci360_testphone',norm($('testPhone').value));$('settingsMsg').textContent='Configurações salvas localmente neste navegador.'};
+$('webhook').value=localStorage.getItem('ci360_webhook')||'';$('testWebhook').value=localStorage.getItem('ci360_testwebhook')||'';$('testPhone').value=localStorage.getItem('ci360_testphone')||'';
+async function post(url,payload){if(!url)throw Error('Configure o webhook n8n na aba Integração.');let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(!r.ok)throw Error('Webhook respondeu HTTP '+r.status);return await r.text()}
+$('ping').onclick=async()=>{try{let t=await post($('webhook').value,{action:'health_check',tenant_id:TENANT,dry_run:true});$('settingsMsg').textContent='Webhook respondeu: '+t.slice(0,400)}catch(e){$('settingsMsg').textContent='Falha no teste: '+e.message}};
+$('sendTest').onclick=async()=>{try{const phone=norm($('testPhone').value);if(!/^55\d{10,11}$/.test(phone))throw Error('Informe telefone autorizado válido.');if(phone===INTERNAL)throw Error('Número interno de teste está bloqueado como destinatário de campanha.');const msg=$('message').value;const t=await post($('testWebhook').value,{action:'send_test',tenant_id:TENANT,campaign_name:$('campName').value,message:msg,leads:[{name:'Contato autorizado',phone,consent:true}],dry_run:false});$('campaignMsg').textContent='Solicitação enviada ao n8n. Resposta: '+t.slice(0,400); }catch(e){$('campaignMsg').textContent='Envio não executado: '+e.message}};
+$('sendBatch').onclick=()=>{$('campaignMsg').textContent='Envio em lote bloqueado neste protótipo. Exige backend n8n com autorização, template aplicável, opt-out e controle de frequência.'};
+</script></body></html>
