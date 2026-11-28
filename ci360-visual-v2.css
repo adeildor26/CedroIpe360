@@ -1,0 +1,133 @@
+/* CEDROIPE 360 - PATCH VISUAL V2
+   Sobrescreve apenas apresentacao. Nao altera dados, API, Supabase ou regras comerciais. */
+:root{
+  --ci-navy:#102747;
+  --ci-navy-2:#17385f;
+  --ci-gold:#c9a45c;
+  --ci-gold-soft:#f4ead5;
+  --ci-ink:#182536;
+  --ci-muted:#64748b;
+  --ci-border:#d8e0e9;
+  --ci-surface:#fff;
+  --ci-surface-soft:#f5f7fa;
+}
+html{scroll-behavior:smooth}
+body{color:var(--ci-ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid var(--ci-gold)!important;outline-offset:2px
+}
+/* Identidade aprovada: azul-marinho, dourado e branco */
+#catalogPager button[data-step],#slidePrev,#slideNext,
+.ci36-page .ci36-prev,.ci36-page .ci36-next,
+.ci36-page .header nav a[href*="index.html"]{
+  background:var(--ci-navy)!important;color:#fff!important;
+  border:1px solid var(--ci-navy)!important;border-radius:9px;
+  box-shadow:0 2px 7px #1027471c
+}
+#catalogPager button[data-step]:not(:disabled):hover,#slidePrev:hover,#slideNext:hover,
+.ci36-page .ci36-prev:hover,.ci36-page .ci36-next:hover{
+  background:var(--ci-navy-2)!important
+}
+#catalogPager button[data-step]:disabled{
+  background:#e8edf3!important;color:#748094!important;border-color:#d7dee8!important;
+  box-shadow:none
+}
+.launch-content p,.ci36-info article:first-child p,.ci-detail-copy p,.featured-copy p{
+  color:var(--ci-muted)!important
+}
+#catalogPager button:focus-visible,#slidePrev:focus-visible,#slideNext:focus-visible,
+.ci36-page .ci36-prev:focus-visible,.ci36-page .ci36-next:focus-visible{
+  outline:3px solid var(--ci-gold)!important;outline-offset:3px
+}
+/* Busca e filtros: compactos, sem criar barra horizontal */
+.compact-hero .quick-search{
+  border:1px solid var(--ci-border);border-radius:14px;background:#fff;
+  box-shadow:0 8px 24px #1027470d
+}
+.compact-hero .quick-search .purpose-switch button,
+.compact-hero .quick-search .search-line button{
+  border-radius:8px
+}
+.ci-filter-panel{
+  border:1px solid var(--ci-border)!important;border-radius:14px!important;
+  background:var(--ci-surface)!important;padding:14px!important;
+  box-shadow:0 5px 18px #10274708
+}
+.ci-filter-heading strong{color:var(--ci-navy)}
+.ci-filter-boxes{
+  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));
+  gap:9px!important;align-items:end
+}
+.ci-filter-box{min-width:0}
+.ci-filter-box>span{display:block;font-size:12px;font-weight:700;color:#475569;margin:0 0 5px}
+.ci-filter-box select{
+  width:100%;min-width:0;min-height:40px;border:1px solid var(--ci-border);
+  border-radius:8px;background:#fff;color:var(--ci-ink);padding:8px 10px
+}
+.ci-filter-clear{
+  min-height:36px;border:1px solid var(--ci-border)!important;border-radius:8px!important;
+  background:var(--ci-surface-soft)!important;color:var(--ci-navy)!important;
+  padding:7px 12px!important;font-weight:700
+}
+/* Alternador Cards/Lista com hierarquia discreta */
+.ci-view-switch{
+  display:flex;align-items:center;justify-content:flex-end;gap:6px;
+  flex-wrap:wrap;margin:12px 0;color:var(--ci-muted)
+}
+.ci-view-switch button{
+  min-height:36px;border:1px solid var(--ci-border);border-radius:8px;
+  padding:6px 12px;background:#fff;color:var(--ci-navy);font-weight:700
+}
+.ci-view-switch button.is-active{
+  background:var(--ci-navy);border-color:var(--ci-navy);color:#fff
+}
+/* Cards maiores e consistentes em telas largas */
+#grid.property-grid{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));
+  gap:18px
+}
+#grid .property{
+  min-width:0;border:1px solid var(--ci-border);border-radius:14px;
+  overflow:hidden;background:#fff;box-shadow:0 5px 18px #1027470b
+}
+#grid .property-image{width:100%;aspect-ratio:16/10;overflow:hidden;background:#edf1f5}
+#grid .property-image img{width:100%;height:100%;object-fit:cover}
+#grid .property-body{padding:14px}
+#grid .property-body h3{color:var(--ci-navy);line-height:1.25}
+#grid .property-meta{display:flex;flex-wrap:wrap;gap:7px 12px}
+#grid .ci-card-actions{display:grid;grid-template-columns:1fr;gap:8px}
+#grid .ci-card-actions .btn{width:100%;min-height:40px;border-radius:8px}
+#grid .ci-card-actions .btn-primary{background:var(--ci-navy)!important;border-color:var(--ci-navy)!important}
+#grid .ci-card-actions .btn-outline{color:var(--ci-navy)!important;border-color:var(--ci-gold)!important}
+/* Lista: foto e conteúdo lado a lado sem deformar */
+#grid.ci-list-view{display:flex!important;flex-direction:column;gap:12px}
+#grid.ci-list-view>.property{
+  display:grid;grid-template-columns:minmax(190px,270px) minmax(0,1fr);
+  width:100%;max-width:none;align-items:stretch
+}
+#grid.ci-list-view>.property .property-image{height:100%;min-height:175px;aspect-ratio:auto}
+#grid.ci-list-view>.property .property-image img{height:100%;min-height:175px;object-fit:cover}
+#grid.ci-list-view>.property .property-body{display:flex;flex-direction:column;justify-content:center}
+#grid.ci-list-view>.property .ci-card-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+#launchesGrid .launch-card{
+  border:1px solid var(--ci-border);border-radius:14px;overflow:hidden;
+  box-shadow:0 5px 18px #1027470b
+}
+#launchesGrid .launch-content h3{color:var(--ci-navy)}
+#launchesGrid .launch-primary{background:var(--ci-navy)!important;border-color:var(--ci-navy)!important}
+#launchesGrid .launch-secondary{border-color:var(--ci-gold)!important;color:var(--ci-navy)!important}
+#hf056-servicos-footer a{background:var(--ci-gold)!important;color:var(--ci-navy)!important}
+#hf056-servicos-footer a:hover{background:#dfc58f!important}
+@media(max-width:680px){
+  #grid.ci-list-view>.property{grid-template-columns:112px minmax(0,1fr)}
+  #grid.ci-list-view>.property .property-image,
+  #grid.ci-list-view>.property .property-image img{min-height:132px}
+  #grid.ci-list-view>.property .property-body{padding:10px}
+  #grid.ci-list-view>.property .ci-card-actions{grid-template-columns:1fr}
+  #grid .property-body{padding:12px}
+  .ci-filter-boxes{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:380px){
+  .ci-filter-boxes{grid-template-columns:1fr}
+  #grid.ci-list-view>.property{grid-template-columns:96px minmax(0,1fr)}
+}
